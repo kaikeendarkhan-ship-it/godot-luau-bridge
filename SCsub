@@ -1,0 +1,12 @@
+Import('env')
+
+module_env = env.Clone()
+# Ensure cross-platform relative include paths for Luau headers
+module_env.Append(CPPPATH=["thirdparty/luau/Compiler/include", "thirdparty/luau/VM/include"])
+
+src_list = [
+    "register_types.cpp",
+    "luau_script_instance.cpp"
+]
+
+module_env.add_source_files(env.modules_sources, src_list)
